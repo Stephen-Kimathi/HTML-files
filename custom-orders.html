@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloom Valley Nursery - Custom Orders</title>
+</head>
+<body>
+    
+    <header>
+        <div>
+            <img src="logo.png" alt="Bloom Valley Nursery Logo" width="80" height="80">
+            <h1>Bloom Valley Nursery</h1>
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="about.html">About Us</a>
+            <a href="custom-orders.html">Custom Orders</a>
+            <a href="#cart">Cart (0)</a>
+        </nav>
+    </header>
+
+   
+    <main>
+        <h1>Custom Landscape Design Services</h1>
+
+       
+        <section id="service-description">
+            <h2>Transform Your Outdoor Space</h2>
+            <p>Our professional landscape design team specializes in creating beautiful, functional outdoor spaces tailored to your unique vision and needs. From small garden makeovers to complete yard transformations, we handle every aspect of the design and installation process.</p>
+            <p>We work closely with you to understand your preferences, assess your space, and develop a comprehensive plan that fits your budget. Our sustainable design approach ensures your landscape thrives for years to come while minimizing water usage and maintenance requirements.</p>
+        </section>
+
+        
+        <section id="project-gallery">
+            <h2>Recent Projects</h2>
+            <div>
+                <article>
+                    <img src="images/project1.jpg" alt="Modern Backyard Oasis" width="400" height="300">
+                    <h3>Modern Backyard Oasis</h3>
+                </article>
+
+                <article>
+                    <img src="images/project2.jpg" alt="Native Plant Garden" width="400" height="300">
+                    <h3>Native Plant Garden</h3>
+                </article>
+
+                <article>
+                    <img src="images/project3.jpg" alt="Vegetable Garden Design" width="400" height="300">
+                    <h3>Vegetable Garden Design</h3>
+                </article>
+
+                <article>
+                    <img src="images/project4.jpg" alt="Front Yard Transformation" width="400" height="300">
+                    <h3>Front Yard Transformation</h3>
+                </article>
+
+                <article>
+                    <img src="images/project5.jpg" alt="Drought-Tolerant Landscape" width="400" height="300">
+                    <h3>Drought-Tolerant Landscape</h3>
+                </article>
+
+                <article>
+                    <img src="images/project6.jpg" alt="Patio Garden Retreat" width="400" height="300">
+                    <h3>Patio Garden Retreat</h3>
+                </article>
+            </div>
+        </section>
+
+       
+        <section id="order-form">
+            <h2>Request a Consultation</h2>
+            <form action="submit-order.php" method="POST">
+                <label for="order-name">Name *</label>
+                <input type="text" id="order-name" name="name" required>
+
+                <label for="order-email">Email *</label>
+                <input type="email" id="order-email" name="email" required>
+
+                <label for="order-phone">Phone *</label>
+                <input type="tel" id="order-phone" name="phone" required>
+
+                <label for="consultation-date">Preferred Consultation Date</label>
+                <input type="date" id="consultation-date" name="consultation-date">
+
+                <label for="service-type">Service Type *</label>
+                <select id="service-type" name="service-type" required>
+                    <option value="">Select a service...</option>
+                    <option value="full-design">Complete Landscape Design</option>
+                    <option value="consultation">Design Consultation Only</option>
+                    <option value="installation">Installation Services</option>
+                    <option value="maintenance">Ongoing Maintenance Plan</option>
+                </select>
+
+                <label for="budget-range">Project Budget Range</label>
+                <select id="budget-range" name="budget">
+                    <option value="">Select a range...</option>
+                    <option value="under-5k">Under $5,000</option>
+                    <option value="5k-10k">$5,000 - $10,000</option>
+                    <option value="10k-20k">$10,000 - $20,000</option>
+                    <option value="20k-plus">Over $20,000</option>
+                </select>
+
+                <label for="property-size">Property Size (sq ft)</label>
+                <input type="number" id="property-size" name="property-size" placeholder="e.g., 5000">
+
+                <label for="project-details">Project Details & Special Requests *</label>
+                <textarea id="project-details" name="details" rows="6" required placeholder="Tell us about your vision, challenges, and any specific requirements..."></textarea>
+
+                <button type="submit">Request Consultation</button>
+            </form>
+        </section>
+
+        
+        <section id="pricing">
+            <h2>Service Packages</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Package</th>
+                        <th>Services Included</th>
+                        <th>Starting Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Basic Consultation</td>
+                        <td>Site visit, design recommendations, plant suggestions</td>
+                        <td>$150</td>
+                    </tr>
+                    <tr>
+                        <td>Design Package</td>
+                        <td>Full design plan, 3D renderings, plant list, materials</td>
+                        <td>$800</td>
+                    </tr>
+                    <tr>
+                        <td>Complete Installation</td>
+                        <td>Design, all materials, professional installation, warranty</td>
+                        <td>$5,000+</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+   
+    <footer>
+        <div>
+            <h3>Contact Us</h3>
+            <p>123 Garden Lane</p>
+            <p>Bloom Valley, CA 94000</p>
+            <p>Phone: (555) 123-4567</p>
+            <p>Email: info@bloomvalley.com</p>
+        </div>
+
+        <div>
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="custom-orders.html">Custom Orders</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h3>Follow Us</h3>
+            <p>Facebook | Instagram | Twitter</p>
+            <div>
+                <p>Subscribe to our newsletter:</p>
+                <input type="email" placeholder="Your email" id="newsletter-email">
+                <button>Subscribe</button>
+            </div>
+        </div>
+
+        <p>&copy; 2025 Bloom Valley Nursery. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloom Valley Nursery - About Us</title>
+</head>
+<body>
+    
+    <header>
+        <div>
+            <img src="logo.png" alt="Bloom Valley Nursery Logo" width="80" height="80">
+            <h1>Bloom Valley Nursery</h1>
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="about.html">About Us</a>
+            <a href="custom-orders.html">Custom Orders</a>
+            <a href="#cart">Cart (0)</a>
+        </nav>
+    </header>
+
+    
+    <main>
+        <h1>About Us</h1>
+
+        
+        <section id="our-story">
+            <h2>Our Story</h2>
+            <p>Bloom Valley Nursery was founded in 1998 by gardening enthusiasts Maria and Robert Chen. What started as a small family operation has grown into the region's premier destination for quality plants and gardening supplies.</p>
+            <p>Our mission is to inspire and support our community in creating beautiful, sustainable gardens. We believe that everyone deserves access to healthy plants and expert guidance, whether they're planting their first herb garden or designing a complete landscape.</p>
+            <p>We source our plants from trusted local growers and use sustainable practices throughout our operations. Our commitment to quality and customer service has made us a trusted partner for thousands of satisfied gardeners.</p>
+        </section>
+
+        <section id="hours-location">
+            <h2>Store Hours & Location</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Day</th>
+                        <th>Hours</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Monday - Friday</td>
+                        <td>8:00 AM - 6:00 PM</td>
+                    </tr>
+                    <tr>
+                        <td>Saturday</td>
+                        <td>9:00 AM - 5:00 PM</td>
+                    </tr>
+                    <tr>
+                        <td>Sunday</td>
+                        <td>10:00 AM - 4:00 PM</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p><strong>Address:</strong> 123 Garden Lane, Bloom Valley, CA 94000</p>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3168.6395445775847!2d-122.08624968469268!3d37.38605097983287!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fb5b2e5c5a5a5%3A0x5e5e5e5e5e5e5e5e!2sBloom%20Valley%20Nursery!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus" width="600" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </section>
+
+       
+        <section id="team">
+            <h2>Meet Our Team</h2>
+            <div>
+                <article>
+                    <img src="images/maria-chen.jpg" alt="Maria Chen" width="200" height="200">
+                    <h3>Maria Chen</h3>
+                    <p>Owner & Horticulturist</p>
+                </article>
+
+                <article>
+                    <img src="images/robert-chen.jpg" alt="Robert Chen" width="200" height="200">
+                    <h3>Robert Chen</h3>
+                    <p>Co-Owner & Landscape Designer</p>
+                </article>
+
+                <article>
+                    <img src="images/jennifer-lopez.jpg" alt="Jennifer Lopez" width="200" height="200">
+                    <h3>Jennifer Lopez</h3>
+                    <p>Plant Care Specialist</p>
+                </article>
+            </div>
+        </section>
+
+       
+        <section id="contact-form">
+            <h2>Contact Us / Customer Feedback</h2>
+            <form action="submit-feedback.php" method="POST">
+                <label for="name">Name *</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone">
+
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" name="subject">
+
+                <label for="message">Message *</label>
+                <textarea id="message" name="message" rows="6" required></textarea>
+
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+    </main>
+
+
+    <footer>
+        <div>
+            <h3>Contact Us</h3>
+            <p>123 Garden Lane</p>
+            <p>Bloom Valley, CA 94000</p>
+            <p>Phone: (555) 123-4567</p>
+            <p>Email: info@bloomvalley.com</p>
+        </div>
+
+        <div>
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="custom-orders.html">Custom Orders</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h3>Follow Us</h3>
+            <p>Facebook | Instagram | Twitter</p>
+            <div>
+                <p>Subscribe to our newsletter:</p>
+                <input type="email" placeholder="Your email" id="newsletter-email">
+                <button>Subscribe</button>
+            </div>
+        </div>
+
+        <p>&copy; 2025 Bloom Valley Nursery. All rights reserved.</p>
+    </footer>
+</body>
+</html>
