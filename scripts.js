@@ -10,10 +10,12 @@ document.addEventListener('DOMContentLoaded', function () {
     const clearCartButton = document.getElementById('clear-cart');
     const processOrderButton = document.getElementById('process-order');
     let cartItems = 0;
+    const cartCountDisplay = document.getElementById('cart-count');
 
     addToCartButtons.forEach(button => {
         button.addEventListener('click', function () {
             cartItems++;
+            cartCountDisplay.textContent = `Cart (${cartItems})`;
             alert('Item added to the cart');
         });
     });
@@ -22,6 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
         clearCartButton.addEventListener('click', function () {
             if (cartItems > 0) {
                 cartItems = 0;
+                cartCountDisplay.textContent = `Cart (0)`;
                 alert('Cart cleared');
             } else {
                 alert('No items to clear.');
