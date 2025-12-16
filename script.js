@@ -1,6 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    let cart = [];
-    
     updateCartCount();
     initializeEventListeners();
     
@@ -28,6 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const clearCartButton = document.getElementById('clear-cart');
         if (clearCartButton) {
             clearCartButton.addEventListener('click', function() {
+                const cart = getCart();
                 if (cart.length === 0) {
                     showNotification('Cart is already empty', 'info');
                     return;
@@ -39,6 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const processOrderButton = document.getElementById('process-order');
         if (processOrderButton) {
             processOrderButton.addEventListener('click', function() {
+                const cart = getCart();
                 if (cart.length === 0) {
                     showNotification('Cart is empty. Add items before processing order.', 'warning');
                     return;
@@ -85,6 +85,7 @@ document.addEventListener('DOMContentLoaded', function() {
             addedAt: new Date().toISOString()
         };
         
+        let cart = getCart();
         const existingProductIndex = cart.findIndex(item => item.name === product.name);
         
         if (existingProductIndex !== -1) {
@@ -92,6 +93,8 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             cart.push(product);
         }
+        
+        sessionStorage.setItem('shoppingCart', JSON.stringify(cart));
         
         updateCartCount();
         showNotification(`${product.name} added to cart!`, 'success');
@@ -105,10 +108,17 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function getCart() {
-        return cart;
+        try {
+            const cartData = sessionStorage.getItem('shoppingCart');
+            return cartData ? JSON.parse(cartData) : [];
+        } catch (error) {
+            console.error('Error reading cart from sessionStorage:', error);
+            return [];
+        }
     }
     
     function updateCartCount() {
+        const cart = getCart();
         const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
         
         const cartCountDisplay = document.getElementById('cart-count');
@@ -128,6 +138,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function displayCart() {
+        const cart = getCart();
         const modal = createCartModal(cart);
         document.body.appendChild(modal);
         
@@ -225,7 +236,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function clearCart() {
         if (confirm('Are you sure you want to clear your cart?')) {
-            cart = [];
+            sessionStorage.removeItem('shoppingCart');
             updateCartCount();
             showNotification('Cart cleared successfully', 'info');
         }
@@ -233,7 +244,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function clearCartFromModal() {
         if (confirm('Are you sure you want to clear your cart?')) {
-            cart = [];
+            sessionStorage.removeItem('shoppingCart');
             updateCartCount();
             closeModal();
             showNotification('Cart cleared successfully', 'info');
@@ -241,6 +252,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function processOrder() {
+        const cart = getCart();
         const total = cart.reduce((sum, item) => {
             const price = parseFloat(item.price.replace('$', ''));
             return sum + (price * item.quantity);
@@ -249,13 +261,14 @@ document.addEventListener('DOMContentLoaded', function() {
         showNotification(`Processing order for $${total.toFixed(2)}...`, 'info');
         
         setTimeout(() => {
-            cart = [];
+            sessionStorage.removeItem('shoppingCart');
             updateCartCount();
             showNotification('Order processed successfully! Thank you for your purchase.', 'success');
         }, 1500);
     }
     
     function processOrderFromModal() {
+        const cart = getCart();
         const total = cart.reduce((sum, item) => {
             const price = parseFloat(item.price.replace('$', ''));
             return sum + (price * item.quantity);
@@ -264,7 +277,7 @@ document.addEventListener('DOMContentLoaded', function() {
         showNotification(`Processing order for $${total.toFixed(2)}...`, 'info');
         
         setTimeout(() => {
-            cart = [];
+            sessionStorage.removeItem('shoppingCart');
             updateCartCount();
             closeModal();
             showNotification('Order processed successfully! Thank you for your purchase.', 'success');
@@ -299,8 +312,26 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         
-        showNotification('Thank you for your message! We will contact you soon.', 'success');
-        form.reset();
+        const formData = {
+            name: name.value.trim(),
+            email: email.value.trim(),
+            message: message.value.trim(),
+            submittedAt: new Date().toISOString(),
+            type: 'contact'
+        };
+        
+        try {
+            let submissions = JSON.parse(localStorage.getItem('contactSubmissions') || '[]');
+            submissions.push(formData);
+            localStorage.setItem('contactSubmissions', JSON.stringify(submissions));
+            localStorage.setItem('lastContactSubmission', JSON.stringify(formData));
+            
+            showNotification('Thank you for your message! We will contact you soon.', 'success');
+            form.reset();
+        } catch (error) {
+            console.error('Error saving contact form:', error);
+            showNotification('Error saving form. Please try again.', 'error');
+        }
     }
     
     function saveCustomOrder(event) {
@@ -309,8 +340,33 @@ document.addEventListener('DOMContentLoaded', function() {
         const form = event.target;
         const orderId = `ORD-${Date.now()}`;
         
-        showNotification(`Order ${orderId} submitted successfully! We'll contact you within 24 hours.`, 'success');
-        form.reset();
+        const orderData = {
+            orderId: orderId,
+            name: form.querySelector('#order-name')?.value || '',
+            email: form.querySelector('#order-email')?.value || '',
+            phone: form.querySelector('#order-phone')?.value || '',
+            consultationDate: form.querySelector('#consultation-date')?.value || '',
+            serviceType: form.querySelector('#service-type')?.value || '',
+            budget: form.querySelector('#budget-range')?.value || '',
+            propertySize: form.querySelector('#property-size')?.value || '',
+            projectDetails: form.querySelector('#project-details')?.value || '',
+            submittedAt: new Date().toISOString(),
+            type: 'custom-order',
+            status: 'pending'
+        };
+        
+        try {
+            let orders = JSON.parse(localStorage.getItem('customOrders') || '[]');
+            orders.push(orderData);
+            localStorage.setItem('customOrders', JSON.stringify(orders));
+            localStorage.setItem('lastCustomOrder', JSON.stringify(orderData));
+            
+            showNotification(`Order ${orderId} submitted successfully! We'll contact you within 24 hours.`, 'success');
+            form.reset();
+        } catch (error) {
+            console.error('Error saving custom order:', error);
+            showNotification('Error submitting order. Please try again.', 'error');
+        }
     }
     
     function handleNewsletterSubscription(event) {
@@ -324,10 +380,25 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         
-        showNotification('Successfully subscribed to our newsletter!', 'success');
-        
-        if (emailInput) {
-            emailInput.value = '';
+        try {
+            let subscribers = JSON.parse(localStorage.getItem('newsletterSubscribers') || '[]');
+            
+            if (subscribers.includes(email)) {
+                showNotification('You are already subscribed!', 'info');
+                return;
+            }
+            
+            subscribers.push(email);
+            localStorage.setItem('newsletterSubscribers', JSON.stringify(subscribers));
+            
+            showNotification('Successfully subscribed to our newsletter!', 'success');
+            
+            if (emailInput) {
+                emailInput.value = '';
+            }
+        } catch (error) {
+            console.error('Error subscribing to newsletter:', error);
+            showNotification('Error subscribing. Please try again.', 'error');
         }
     }
     
@@ -397,4 +468,6 @@ document.addEventListener('DOMContentLoaded', function() {
     document.head.appendChild(style);
     
     console.log('Bloom Valley Nursery - JavaScript initialized successfully');
+    console.log('Shopping cart using sessionStorage');
+    console.log('Forms using localStorage');
 });
