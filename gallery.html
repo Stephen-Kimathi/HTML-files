@@ -4,12 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <script src="scripts.js"></script>
-    <script src="script.js"></script>
     <title>Bloom Valley Nursery - Gallery</title>
 </head>
 <body>
-   
     <header>
         <div>
             <img src="logo.png" alt="Bloom Valley Nursery Logo" width="80" height="80">
@@ -20,20 +17,15 @@
             <a href="gallery.html">Gallery</a>
             <a href="about.html">About Us</a>
             <a href="custom-orders.html">Custom Orders</a>
-            <a href="#cart"> 
+            <a href="#cart" id="view-cart">
                 <span id="cart-count">Cart (0)</span>
             </a>
         </nav>
-       
     </header>
 
     <main>
         <h1>Our Plant Collection</h1>
- <div>
-        <button class="add-to-cart">Add to Cart</button> 
-        <button id="clear-cart">Clear Cart</button>      
-        <button id="process-order">Process Order</button>
- </div>
+
         <section id="filter-section">
             <button>All</button>
             <button>Indoor Plants</button>
@@ -42,7 +34,6 @@
             <button>Flowers</button>
             <button>Garden Supplies</button>
         </section>
-        
 
         <section id="product-gallery">
             <table>
@@ -61,63 +52,63 @@
                         <td>Aloe Plant</td>
                         <td>Indoor Plants</td>
                         <td>$45.99</td>
-                        <td><button>Add to Cart</button></td>
+                        <td><button class="add-to-cart" data-product-name="Aloe Plant" data-product-price="$45.99" data-product-category="Indoor Plants">Add to Cart</button></td>
                     </tr>
                     <tr>
                         <td><img src="Client1_AppleTree.png" alt="Apple Tree" width="100" height="100"></td>
                         <td>Apple Tree</td>
                         <td>Outdoor Plants</td>
                         <td>$99.99</td>
-                        <td><button>Add to Cart</button></td>
+                        <td><button class="add-to-cart" data-product-name="Apple Tree" data-product-price="$99.99" data-product-category="Outdoor Plants">Add to Cart</button></td>
                     </tr>
                     <tr>
                         <td><img src="Client1_BirchTree.png" alt="Birch Tree" width="100" height="100"></td>
                         <td>Birch Tree</td>
                         <td>Outdoor Plants</td>
                         <td>$89.99</td>
-                        <td><button>Add to Cart</button></td>
+                        <td><button class="add-to-cart" data-product-name="Birch Tree" data-product-price="$89.99" data-product-category="Outdoor Plants">Add to Cart</button></td>
                     </tr>
                     <tr>
                         <td><img src="Client1_BirdHouse.png" alt="Bird House" width="100" height="100"></td>
                         <td>Bird House</td>
                         <td>Garden Supplies</td>
                         <td>$24.99</td>
-                        <td><button>Add to Cart</button></td>
+                        <td><button class="add-to-cart" data-product-name="Bird House" data-product-price="$24.99" data-product-category="Garden Supplies">Add to Cart</button></td>
                     </tr>
                     <tr>
                         <td><img src="Client1_MapleTree.png" alt="Maple Tree" width="100" height="100"></td>
                         <td>Maple Tree</td>
                         <td>Outdoor Plants</td>
                         <td>$79.99</td>
-                        <td><button>Add to Cart</button></td>
+                        <td><button class="add-to-cart" data-product-name="Maple Tree" data-product-price="$79.99" data-product-category="Outdoor Plants">Add to Cart</button></td>
                     </tr>
                     <tr>
                         <td><img src="Client1_PottingSoil.png" alt="Potting Soil" width="100" height="100"></td>
                         <td>Potting Soil</td>
                         <td>Garden Supplies</td>
                         <td>$15.99</td>
-                        <td><button>Add to Cart</button></td>
+                        <td><button class="add-to-cart" data-product-name="Potting Soil" data-product-price="$15.99" data-product-category="Garden Supplies">Add to Cart</button></td>
                     </tr>
                     <tr>
                         <td><img src="Client1_SpiderPlant.png" alt="Spider Plant" width="100" height="100"></td>
                         <td>Spider Plant</td>
                         <td>Indoor Plants</td>
                         <td>$29.99</td>
-                        <td><button>Add to Cart</button></td>
+                        <td><button class="add-to-cart" data-product-name="Spider Plant" data-product-price="$29.99" data-product-category="Indoor Plants">Add to Cart</button></td>
                     </tr>
                     <tr>
                         <td><img src="Client1_StringOfPearls.png" alt="String of Pearls" width="100" height="100"></td>
                         <td>String of Pearls</td>
                         <td>Succulents</td>
                         <td>$22.99</td>
-                        <td><button>Add to Cart</button></td>
+                        <td><button class="add-to-cart" data-product-name="String of Pearls" data-product-price="$22.99" data-product-category="Succulents">Add to Cart</button></td>
                     </tr>
                     <tr>
                         <td><img src="Client1_WateringCan.png" alt="Watering Can" width="100" height="100"></td>
                         <td>Watering Can</td>
                         <td>Garden Supplies</td>
                         <td>$12.99</td>
-                        <td><button>Add to Cart</button></td>
+                        <td><button class="add-to-cart" data-product-name="Watering Can" data-product-price="$12.99" data-product-category="Garden Supplies">Add to Cart</button></td>
                     </tr>
                 </tbody>
             </table>
@@ -148,12 +139,14 @@
             <p>Facebook | Instagram | Twitter</p>
             <div>
                 <p>Subscribe to our newsletter:</p>
-                <input type="email" placeholder="Your email" id="newsletter-email">
-                <button>Subscribe</button>
+                <input type="email" placeholder="Your email" id="subscribe-email">
+                <button id="subscribe-button">Subscribe</button>
             </div>
         </div>
 
         <p>&copy; 2025 Bloom Valley Nursery. All rights reserved.</p>
     </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
